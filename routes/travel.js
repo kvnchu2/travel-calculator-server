@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
-/* GET users listing. */
+/* GET travel time and mileage for route */
 router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon', function(req, response, next) {
   const fromLat = req.params['fromLat'];
   const fromLon = req.params['fromLon'];
