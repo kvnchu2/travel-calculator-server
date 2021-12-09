@@ -19,7 +19,7 @@ router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', functi
     //   console.log(res.data.routes[0].summary);
     // });
 
-  return "hello";
+  response.send("hello");
 });
 
 module.exports = router;
