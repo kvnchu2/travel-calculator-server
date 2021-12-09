@@ -39,6 +39,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+console.log(process.env.TOMTOM_KEY);
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}!`);
 });
