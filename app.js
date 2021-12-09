@@ -9,8 +9,6 @@ const PORT = 8080;
 const indexRouter = require('./routes/index');
 const travelRouter = require('./routes/travel');
 
-const app = express();
-
 const allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
@@ -24,11 +22,12 @@ const allowCrossDomain = function(req, res, next) {
     next();
   }
 };
-
+const app = express();
+app.use(allowCrossDomain);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-app.use(allowCrossDomain);
+
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
