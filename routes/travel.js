@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const cors = require("cors");
 
-app.use(cors());
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -16,10 +14,12 @@ router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', functi
   const toLon = req.params['toLon'];
   const departTime = req.params['departTime'];
 
-  return axios.get(`https://api.tomtom.com/routing/1/calculateRoute/${fromLat},${fromLon}:${toLat},${toLon}/json?key=${process.env.TOMTOM_KEY}&departAt=${departTime}&traffic=true`)
+  // return axios.get(`https://api.tomtom.com/routing/1/calculateRoute/${fromLat},${fromLon}:${toLat},${toLon}/json?key=${process.env.TOMTOM_KEY}&departAt=${departTime}&traffic=true`)
     // .then((res) => {
     //   console.log(res.data.routes[0].summary);
     // });
+
+  return axios.get('https://jsonplaceholder.typicode.com/todos/1');
 });
 
 module.exports = router;
