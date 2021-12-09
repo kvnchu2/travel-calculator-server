@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 /* GET travel time and mileage for route */
 router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', function(req, response, next) {
   const fromLat = req.params['fromLat'];
@@ -10,7 +13,7 @@ router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', functi
   const toLon = req.params['toLon'];
   const departTime = req.params['departTime'];
 
-  axios.get(`https://api.tomtom.com/routing/1/calculateRoute/${fromLat},${fromLon}:${toLat},${toLon}/json?key=atFqCv6vs5HzL0u9qS9G5HXnhdYAA6kv&departAt=${departTime}&traffic=true`)
+  axios.get(`https://api.tomtom.com/routing/1/calculateRoute/${fromLat},${fromLon}:${toLat},${toLon}/json?key=${process.env.TOMTOM_KEY}&departAt=${departTime}&traffic=true`)
     .then((res) => {
       console.log(res.data.routes[0].summary);
     });
