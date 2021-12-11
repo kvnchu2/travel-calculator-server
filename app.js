@@ -18,8 +18,8 @@ app.set('view engine', 'jade');
 
 app.use(
   cors({
-      origin: "http://localhost:3000", 
-      credentials: true,
+    origin: "https://comcalc.netlify.app/",
+    credentials: true,
   })
 );
 app.use(logger('dev'));
