@@ -6,8 +6,10 @@ const logger = require('morgan');
 const cors = require("cors");
 const PORT = 8080;
 
+const database = require('./routes/database');
 const indexRouter = require('./routes/index');
 const travelRouter = require('./routes/travel');
+const clientRoutes = require('./routes/client');
 
 
 const app = express();
@@ -24,12 +26,16 @@ app.use(
 );
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ type: "application/x-www-form-urlencoded" }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/travel', travelRouter);
+
+const clientRouter = express.Router();
+clientRoutes(clientRouter, database);
+app.use('/client', clientRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,7 +54,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}!`);
+  console.log(`travel-calculator-server app listening on port ${PORT}!`);
 });
 
 module.exports = app;
