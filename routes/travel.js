@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 
+
 const dotenv = require('dotenv');
 dotenv.config();
 
@@ -13,12 +14,22 @@ router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', functi
   const toLon = req.params['toLon'];
   const departTime = req.params['departTime'];
 
-  axios.get(`https://api.tomtom.com/routing/1/calculateRoute/${fromLat},${fromLon}:${toLat},${toLon}/json?key=${process.env.TOMTOM_KEY}&departAt=${departTime}&traffic=true`)
-    .then((res) => {
-      console.log(res.data.routes[0].summary);
-    });
+  // return axios.get(`https://api.tomtom.com/routing/1/calculateRoute/${fromLat},${fromLon}:${toLat},${toLon}/json?key=${process.env.TOMTOM_KEY}&departAt=${departTime}&traffic=true`);
+    // .then((res) => {
+    //   console.log(res.data.routes[0].summary);
+    // });
+
+  // return axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  //   .then((result) => {
+  //     console.log(typeof result);
+  //   });
+
+  return response.send("hello");
+
 });
 
 module.exports = router;
 
 //http://localhost:8080/travel/calculateRoute/49.22469/-123.03518/49.23566/-123.12379/2021-11-05T15:30:00.000Z
+
+//https://travel-calculator-server.herokuapp.com/travel/calculateRoute/49.22469/-123.03518/49.23566/-123.12379/2021-11-05T15:30:00.000Z
