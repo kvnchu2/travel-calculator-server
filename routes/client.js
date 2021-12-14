@@ -1,7 +1,12 @@
 module.exports = function(router, database) {
 
-  router.get('/new', (req, res) => {
-    res.send("hello this is new");
+  router.post('/new', (req, res) => {
+    const client = req.body;
+    database.addClient(client)
+      .then(() => {
+        res.send("🤗");
+      })
+      .catch(e => res.send(e));
   });
 
   return router;

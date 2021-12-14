@@ -26,7 +26,7 @@ app.use(
 );
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ type: "application/x-www-form-urlencoded" }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
