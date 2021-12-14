@@ -19,7 +19,12 @@ router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', functi
     //   console.log(res.data.routes[0].summary);
     // });
 
-  return axios.get('https://jsonplaceholder.typicode.com/todos/1');
+  // return axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  //   .then((result) => {
+  //     console.log(typeof result);
+  //   });
+
+  return response.send("hello");
 
 });
 
