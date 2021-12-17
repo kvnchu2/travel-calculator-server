@@ -14,6 +14,7 @@ const pool = new Pool({
   password: process.env['PROD_PASS'],
   host: process.env['PROD_HOST'],
   database: process.env['PROD_DATABASE'],
+  port: process.env['PROD_PORT'],
   ssl: true
 });
 
