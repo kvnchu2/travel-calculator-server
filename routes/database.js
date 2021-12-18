@@ -10,13 +10,10 @@ dotenv.config();
 // });
 
 const pool = new Pool({
-  user: process.env['PROD_USER'],
-  password: process.env['PROD_PASS'],
-  host: process.env['PROD_HOST'],
-  database: process.env['PROD_DATABASE'],
-  port: process.env['PROD_PORT'],
-  URI: process.env['PROD_URI'],
-  ssl: true
+  connectionString: process.env.PROD_URI,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 const addClient =  function(client) {
