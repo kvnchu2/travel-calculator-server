@@ -4,7 +4,6 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require("cors");
-const PORT = 8080;
 
 const database = require('./routes/database');
 const indexRouter = require('./routes/index');
@@ -53,8 +52,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(PORT, () => {
-  console.log(`travel-calculator-server app listening on port ${PORT}!`);
+app.listen(process.env.PORT || 3000, function() {
+  console.log("Express server listening on port %d in %s mode");
 });
 
 module.exports = app;
