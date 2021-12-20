@@ -27,5 +27,7 @@ const addClient =  function(client) {
   .catch(err => {
     console.log("error message", err);
   });
-}
+};
+
+
 exports.addClient = addClient;
