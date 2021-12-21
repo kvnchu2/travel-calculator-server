@@ -9,5 +9,13 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
+  router.get('/all', (req, res) => {
+    database.getAllClients()
+      .then((results) => {
+        res.send(results);
+      })
+      .catch(e => res.send(e));
+  });
+
   return router;
-}
+};
