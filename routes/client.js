@@ -18,7 +18,7 @@ module.exports = function(router, database) {
   });
 
   router.delete('/delete', (req, res) => {
-    const id = req.body.id;
+    const id = req.body["id"];
     database.deleteClient(id)
       .then(() => {
         res.send("🤗");
