@@ -53,4 +53,4 @@ const deleteClient = function(id) {
     });
 };
 
-exports.deleteClients = deleteClient;
+exports.deleteClient = deleteClient;
