@@ -54,3 +54,18 @@ const deleteClient = function(id) {
 };
 
 exports.deleteClient = deleteClient;
+
+const findClient = function(name) {
+  return pool.query(`
+    SELECT * from CLIENTS
+    WHERE name = $1;
+    `, [name])
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.findClient = findClient;
