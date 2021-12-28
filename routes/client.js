@@ -32,7 +32,7 @@ module.exports = function(router, database) {
     console.log(name);
     database.findClient(name)
       .then((results) => {
-        res.send("🤗");
+        res.send(results);
         console.log(results);
       })
       .catch(e => res.send(e));
