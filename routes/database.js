@@ -58,7 +58,8 @@ exports.deleteClient = deleteClient;
 const findClient = function(name) {
   return pool.query(`
     SELECT * from CLIENTS
-    WHERE name = $1;
+    WHERE name = $1 and 
+    provider = 'ICBC';
     `, [name])
     .then(res => {
       return res;
