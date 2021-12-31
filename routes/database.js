@@ -55,7 +55,7 @@ const deleteClient = function(id) {
 
 exports.deleteClient = deleteClient;
 
-const findClient = function(name) {
+const findIcbcClient = function(name) {
   return pool.query(`
     SELECT * from CLIENTS
     WHERE name = $1 
@@ -69,4 +69,4 @@ const findClient = function(name) {
     });
 };
 
-exports.findClient = findClient;
+exports.findIcbcClient = findIcbcClient;

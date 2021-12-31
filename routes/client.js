@@ -27,16 +27,18 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
-  router.get('/find/:name', (req, res) => {
+  router.get('/find/icbc/:name', (req, res) => {
     const name = req.params["name"];
     console.log(name);
-    database.findClient(name)
+    database.findIcbcClient(name)
       .then((results) => {
         res.send(results);
         console.log(results);
       })
       .catch(e => res.send(e));
   });
+
+  
 
   return router;
 };
