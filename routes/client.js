@@ -38,6 +38,17 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
+  router.get('/find/wsbc/:name', (req, res) => {
+    const name = req.params["name"];
+    console.log(name);
+    database.findWsbcClient(name)
+      .then((results) => {
+        res.send(results);
+        console.log(results);
+      })
+      .catch(e => res.send(e));
+  });
+
   
 
   return router;

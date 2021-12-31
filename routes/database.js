@@ -70,3 +70,19 @@ const findIcbcClient = function(name) {
 };
 
 exports.findIcbcClient = findIcbcClient;
+
+const findWsbcClient = function(name) {
+  return pool.query(`
+    SELECT * from CLIENTS
+    WHERE name = $1 
+    AND (provider = 'WSBC' OR provider = '');
+    `, [name])
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.findWsbcClient = findWsbcClient;
