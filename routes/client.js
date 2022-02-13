@@ -27,6 +27,17 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
+  router.post('/edit/address', (req, res) => {
+    const id = req.body["id"];
+    const address = req.body["address"];
+    console.log(id);
+    database.editAddress(id, address)
+      .then(() => {
+        res.send("🤗");
+      })
+      .catch(e => res.send(e));
+  });
+
   router.get('/find/icbc/:name', (req, res) => {
     const name = req.params["name"];
     console.log(name);

@@ -55,6 +55,22 @@ const deleteClient = function(id) {
 
 exports.deleteClient = deleteClient;
 
+const editAddress = function(id,address) {
+  return pool.query(`
+    UPDATE CLIENTS
+    SET ADDRESS = $2
+    WHERE id = $1;
+    `, [id, address])
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.editAddress = editAddress;
+
 const findIcbcClient = function(name) {
   return pool.query(`
     SELECT * from CLIENTS
