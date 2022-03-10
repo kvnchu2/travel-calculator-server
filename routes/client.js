@@ -27,11 +27,12 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
-  router.post('/edit/address', (req, res) => {
+  router.post('/edit/client', (req, res) => {
     const id = req.body["id"];
     const address = req.body["address"];
+    const endDate = req.body["end_date"];
     console.log(id);
-    database.editAddress(id, address)
+    database.editClient(id, address, endDate)
       .then(() => {
         res.send("🤗");
       })
