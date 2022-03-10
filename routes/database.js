@@ -70,7 +70,7 @@ const editClient = function(id,address, endDate) {
     });
 };
 
-exports.editAddress = editClient;
+exports.editClient = editClient;
 
 const findIcbcClient = function(name) {
   return pool.query(`
