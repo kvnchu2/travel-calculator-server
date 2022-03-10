@@ -58,8 +58,8 @@ exports.deleteClient = deleteClient;
 const editClient = function(id,address, endDate) {
   return pool.query(`
     UPDATE CLIENTS
-    SET ADDRESS = $2
-    AND end_date = $3
+    SET ADDRESS = $2,
+    end_date = $3
     WHERE id = $1;
     `, [id, address, endDate])
     .then(res => {
