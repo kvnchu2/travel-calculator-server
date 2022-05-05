@@ -107,40 +107,36 @@ exports.findWsbcClient = findWsbcClient;
 const findEndDateClient = function() {
 
   //accepts a date and converts it to a string ex. 2022-05-05
-  // const formatDate = (date) => {
-  //   let d = new Date(date),
-  //     month = '' + (d.getMonth() + 1),
-  //     day = '' + d.getDate(),
-  //     year = d.getFullYear();
+  const formatDate = (date) => {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
 
-  //   if (month.length < 2) {
-  //     month = '0' + month;
-  //   }
-  //   if (day.length < 2) {
-  //     day = '0' + day;
-  //   }
-  //   return [year, month, day].join('-');
-  // };
+    if (month.length < 2) {
+      month = '0' + month;
+    }
+    if (day.length < 2) {
+      day = '0' + day;
+    }
+    return [year, month, day].join('-');
+  };
 
 
-  // const currentDate = new Date();
-  // const notificationDate = currentDate.getDate() + 14;
-
-  // return pool.query(`
-  //   SELECT * from CLIENTS
-  //   WHERE end_date BETWEEN $1 AND $2;
-  //   `, [formatDate(currentDate), formatDate(notificationDate)])
-  //   .then(res => {
-  //     return res;
-  //   })
-  //   .catch(err => {
-  //     console.log("error message", err);
-  //   });
+  const currentDate = new Date();
+  const notificationDate = currentDate.getDate() + 14;
 
   return pool.query(`
-    SELECT * from CLIENTS;
-    `)
-    .then(res => res.rows);
+    SELECT * from CLIENTS
+    WHERE end_date BETWEEN $1 AND $2;
+    `, [formatDate(currentDate), formatDate(notificationDate)])
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+
 };
 
 exports.findEndDateClient = findEndDateClient;
