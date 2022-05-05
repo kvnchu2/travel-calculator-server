@@ -138,4 +138,4 @@ const filterEndDateClient = function() {
     });
 };
 
-exports.findEndDateClient = filterEndDateClient;
+exports.filterEndDateClient = filterEndDateClient;
