@@ -104,7 +104,7 @@ const findWsbcClient = function(name) {
 
 exports.findWsbcClient = findWsbcClient;
 
-const filterEndDateClient = function() {
+const findEndDateClient = function() {
 
   //accepts a date and converts it to a string ex. 2022-05-05
   // const formatDate = (date) => {
@@ -143,4 +143,4 @@ const filterEndDateClient = function() {
     .then(res => res.rows);
 };
 
-exports.filterEndDateClient = filterEndDateClient;
+exports.findEndDateClient = findEndDateClient;

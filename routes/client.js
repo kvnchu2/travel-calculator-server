@@ -61,8 +61,8 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
-  router.get('/filter/enddate', (req, res) => {
-    database.filterEndDateClient()
+  router.get('/find/enddate', (req, res) => {
+    database.findEndDateClient()
       .then((results) => {
         res.send(results);
         console.log(results);
