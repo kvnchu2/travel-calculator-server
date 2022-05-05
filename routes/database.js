@@ -106,6 +106,7 @@ exports.findWsbcClient = findWsbcClient;
 
 const filterEndDateClient = function() {
 
+  //accepts a date and converts it to a string ex. 2022-05-05
   const formatDate = (date) => {
     let d = new Date(date),
       month = '' + (d.getMonth() + 1),
@@ -137,4 +138,4 @@ const filterEndDateClient = function() {
     });
 };
 
-exports.findWsbcClient = filterEndDateClient;
+exports.findEndDateClient = filterEndDateClient;
