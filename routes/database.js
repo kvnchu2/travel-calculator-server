@@ -124,7 +124,9 @@ const findEndDateClient = function() {
 
 
   const currentDate = new Date();
-  const notificationDate = currentDate.getDate() + 14;
+  const notificationDate = new Date();
+
+  notificationDate.setDate(currentDate.getDate() + 14);
 
   return pool.query(`
     SELECT * from CLIENTS
