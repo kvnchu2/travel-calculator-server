@@ -133,7 +133,7 @@ const findEndDateClient = function() {
     WHERE end_date BETWEEN $1 AND $2;
     `, [formatDate(currentDate), formatDate(notificationDate)])
     .then(res => {
-      return res.data.rows[0];
+      return res;
     })
     .catch(err => {
       console.log("error message", err);
