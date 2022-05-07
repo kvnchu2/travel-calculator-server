@@ -65,7 +65,7 @@ module.exports = function(router, database) {
     database.findEndDateClient()
       .then((results) => {
         res.send(results);
-        console.log(results.rows);
+        console.log(results);
       })
       .catch(e => res.send(e));
   });
