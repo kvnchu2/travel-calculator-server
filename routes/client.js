@@ -64,13 +64,11 @@ module.exports = function(router, database) {
   router.get('/find/enddate', (req, res) => {
     database.findEndDateClient()
       .then((results) => {
-        res.send(results.data.rows[0]);
+        res.send(results);
         console.log(results);
       })
       .catch(e => res.send(e));
   });
-
-  
 
   return router;
 };
