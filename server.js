@@ -19,6 +19,7 @@ app.set('view engine', 'jade');
 // app.use(
 //   cors()
 // );
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ type: "application/x-www-form-urlencoded" }));
