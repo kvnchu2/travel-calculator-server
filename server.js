@@ -9,6 +9,7 @@ const database = require('./routes/database');
 const indexRouter = require('./routes/index');
 const travelRouter = require('./routes/travel');
 const clientRoutes = require('./routes/client');
+const sessionRoutes = require('./routes/session');
 
 const app = express();
 
@@ -33,6 +34,10 @@ app.use('/travel', travelRouter);
 const clientRouter = express.Router();
 clientRoutes(clientRouter, database);
 app.use('/client', clientRouter);
+
+const sessionRouter = express.Router();
+sessionRoutes(sessionRouter, database);
+app.use('/session', sessionRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

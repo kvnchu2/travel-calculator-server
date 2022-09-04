@@ -142,3 +142,26 @@ const findEndDateClient = function() {
 };
 
 exports.findEndDateClient = findEndDateClient;
+
+
+//function to get all initials of clients, send to the front end and store in array
+
+
+const getClientInitials = function() {
+  return pool.query(`
+    SELECT name from CLIENTS
+    `)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+
+};
+
+exports.getClientInitials = getClientInitials;
+
+//function to loop through array of client initials, and query treatment start and end date
+
+//function that accepts treatment start and end date as parameters, then pulls all events in the date range, counts number of client initials events and use sql query to update sessions completed column
