@@ -149,7 +149,7 @@ exports.findEndDateClient = findEndDateClient;
 
 const getClientInitials = function() {
   return pool.query(`
-    SELECT name from CLIENTS
+    SELECT name, start_date, end_date from CLIENTS
     `)
     .then(res => {
       return res;
@@ -163,5 +163,6 @@ const getClientInitials = function() {
 exports.getClientInitials = getClientInitials;
 
 //function to loop through array of client initials, and query treatment start and end date
+
 
 //function that accepts treatment start and end date as parameters, then pulls all events in the date range, counts number of client initials events and use sql query to update sessions completed column
