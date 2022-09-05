@@ -1,3 +1,5 @@
+/* global gapi */
+
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -208,9 +210,8 @@ const sessionsCompleted = function(name, startDate, endDate) {
     
   };
 
-  var gapi = window.gapi
-  /* 
-    Update with your own Client Id and Api key 
+  /*
+    Update with your own Client Id and Api key
   */
   var CLIENT_ID = process.env["CLIENT_ID"]
   var API_KEY = process.env["API_KEY"]
