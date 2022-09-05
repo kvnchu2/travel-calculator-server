@@ -163,13 +163,91 @@ const getClientDates = function() {
 exports.getClientDates = getClientDates;
 
 //function to:
-//1) accept start_date and end_date as parameters
+//1) accept name, start_date and end_date as parameters
 //2) converts it to day month year format
 //3) pulls all events within those dates
 //4) counts number of events that match with client initials
 //5) updates clients table column sessions_completed
 
+const sessionsCompleted = function(name, startDate, endDate) {
+
+  const formatDate = (date) => {
+    let convertToArray = date.split("-");
+
+    if (convertToArray[1] === "01") {
+    
+      convertToArray[1] = "January";
+    } else if (convertToArray[1] === "02") {
+      convertToArray[1] = "February";
+    } else if (convertToArray[1] === "03") {
+      convertToArray[1] = "March";
+    } else if (convertToArray[1] === "04") {
+      convertToArray[1] = "April";
+    } else if (convertToArray[1] === "05") {
+      convertToArray[1] = "May";
+    } else if (convertToArray[1] === "06") {
+      convertToArray[1] = "June";
+    } else if (convertToArray[1] === "07") {
+      convertToArray[1] = "July";
+    } else if (convertToArray[1] === "08") {
+      convertToArray[1] = "August";
+    } else if (convertToArray[1] === "09") {
+      convertToArray[1] = "September";
+    } else if (convertToArray[1] === "10") {
+      convertToArray[1] = "October";
+    } else if (convertToArray[1] === "11") {
+      convertToArray[1] = "November";
+    } else if (convertToArray[1] === "12") {
+      convertToArray[1] = "December";
+    }
+
+    const order = [2,1,0];
+    const reorderedArray = order.map(i => convertToArray[i]).join(" ");
+
+    return reorderedArray;
+    
+  };
+
+  var gapi = window.gapi
+  /* 
+    Update with your own Client Id and Api key 
+  */
+  var CLIENT_ID = process.env["CLIENT_ID"]
+  var API_KEY = process.env["API_KEY"]
+  var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"]
+  var SCOPES = "https://www.googleapis.com/auth/calendar.events"
 
 
+  gapi.load('client:auth2', () => {
+    console.log('loaded client');
 
+    gapi.client.init({
+      apiKey: API_KEY,
+      clientId: CLIENT_ID,
+      discoveryDocs: DISCOVERY_DOCS,
+      scope: SCOPES,
+    });
+
+    gapi.client.load('calendar', 'v3', () => console.log('bam!'));
+
+    gapi.auth2.getAuthInstance().signIn()
+      .then(() => {
+        
+        // get events
+        gapi.client.calendar.events.list({
+          'calendarId': 'primary',
+          'timeMin': (new Date(`${formatDate(startDate)} 07:00 UTC`)).toISOString(),
+          'timeMax': (new Date(`${formatDate(endDate)} 6:59 UTC`)).toISOString(),
+          'showDeleted': false,
+          'singleEvents': true, //shows recurring events
+          'maxResults': 10,
+          'orderBy': 'startTime'
+        }).then((results) => {
+          console.log(results);
+        });
+      });
+  });
+};
+
+exports.sessionsCompleted = sessionsCompleted;
 
