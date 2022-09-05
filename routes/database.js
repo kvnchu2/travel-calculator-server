@@ -149,7 +149,8 @@ exports.findEndDateClient = findEndDateClient;
 
 const getClientInitials = function() {
   return pool.query(`
-    SELECT clients_id, start_date, end_date from SESSIONS
+    SELECT name, start_date, end_date, 
+    FROM Clients
     `)
     .then(res => {
       return res;
@@ -157,12 +158,18 @@ const getClientInitials = function() {
     .catch(err => {
       console.log("error message", err);
     });
-
 };
 
 exports.getClientInitials = getClientInitials;
 
-//function to loop through array of client initials, and query treatment start and end date
+//function to:
+//1) accept start_date and end_date as parameters
+//2) converts it to day month year format
+//3) pulls all events within those dates
+//4) counts number of events that match with client initials
+//5) updates clients table column sessions_completed
 
 
-//function that accepts treatment start and end date as parameters, then pulls all events in the date range, counts number of client initials events and use sql query to update sessions completed column
+
+
+
