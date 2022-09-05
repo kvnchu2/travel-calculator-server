@@ -149,7 +149,7 @@ exports.findEndDateClient = findEndDateClient;
 
 const getClientInitials = function() {
   return pool.query(`
-    SELECT name, start_date, end_date from CLIENTS
+    SELECT clients_id, start_date, end_date from SESSIONS
     `)
     .then(res => {
       return res;
