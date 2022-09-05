@@ -1,7 +1,7 @@
 module.exports = function(router, database) {
 
   router.get('/clients', (req, res) => {
-    database.getClientInitials()
+    database.getClientDates()
       .then((results) => {
         res.send(results);
       })

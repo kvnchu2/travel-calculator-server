@@ -147,9 +147,9 @@ exports.findEndDateClient = findEndDateClient;
 //function to get all initials of clients, send to the front end and store in array
 
 
-const getClientInitials = function() {
+const getClientDates = function() {
   return pool.query(`
-    SELECT name, start_date, end_date, 
+    SELECT name, start_date, end_date 
     FROM Clients
     `)
     .then(res => {
@@ -160,7 +160,7 @@ const getClientInitials = function() {
     });
 };
 
-exports.getClientInitials = getClientInitials;
+exports.getClientDates = getClientDates;
 
 //function to:
 //1) accept start_date and end_date as parameters
