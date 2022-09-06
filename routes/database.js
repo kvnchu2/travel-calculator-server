@@ -170,7 +170,7 @@ const updateSessionsCompleted = function(name, sessionsCompleted) {
     UPDATE Clients
     SET sessions_completed = $2
     WHERE name = $1
-    `,[name, sessionsCompleted])
+    `,[name, Number(sessionsCompleted)])
     .then(res => {
       return res;
     })
