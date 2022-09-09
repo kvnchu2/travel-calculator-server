@@ -21,7 +21,7 @@ const pool = new Pool({
 const addClient =  function(client) {
   return pool.query(`
   INSERT INTO clients (name, address, provider, end_date, start_date)
-  VALUES ($1, $2, $3, $4) returning *;
+  VALUES ($1, $2, $3, $4, $5) returning *;
   `, [client.name, client.address, client.provider, client.end_date, client.start_date])
     .then(res => {
       return res;
