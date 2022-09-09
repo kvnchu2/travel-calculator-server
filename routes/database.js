@@ -62,7 +62,7 @@ const editClient = function(id,address, endDate, startDate) {
     UPDATE CLIENTS
     SET ADDRESS = $2,
     end_date = $3,
-    start_date = $4,
+    start_date = $4
     WHERE id = $1;
     `, [id, address, endDate, startDate])
     .then(res => {
