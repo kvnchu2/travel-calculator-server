@@ -57,14 +57,15 @@ const deleteClient = function(id) {
 
 exports.deleteClient = deleteClient;
 
-const editClient = function(id,address, endDate, startDate) {
+const editClient = function(id,address, endDate, startDate, sessionsRemaining) {
   return pool.query(`
     UPDATE CLIENTS
     SET ADDRESS = $2,
     end_date = $3,
-    start_date = $4
+    start_date = $4,
+    sessions_remaining = $5
     WHERE id = $1;
-    `, [id, address, endDate, startDate])
+    `, [id, address, endDate, startDate, sessionsRemaining])
     .then(res => {
       return res;
     })

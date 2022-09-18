@@ -32,8 +32,9 @@ module.exports = function(router, database) {
     const address = req.body["address"];
     const endDate = req.body["end_date"];
     const startDate = req.body["start_date"];
+    const sessionsRemaining = req.body["sessions_remaining"];
     console.log(id);
-    database.editClient(id, address, endDate, startDate)
+    database.editClient(id, address, endDate, startDate, sessionsRemaining)
       .then(() => {
         res.send("🤗");
       })
