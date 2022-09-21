@@ -183,11 +183,21 @@ const updateSessionsCompleted = function(name, sessionsCompleted) {
 
 exports.updateSessionsCompleted = updateSessionsCompleted;
 
-//function to:
-//1) accept name, start_date and end_date as parameters
-//2) converts it to day month year format
-//3) pulls all events within those dates
-//4) counts number of events that match with client initials
-//5) updates clients table column sessions_completed
+
+const findSessionsWarning = function() {
+  return pool.query(`
+    SELECT * from Clients
+    WHERE sessions_remaining - sessions_completed <= 3;
+    `)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.findSessionsWarning = findSessionsWarning;
+
 
 

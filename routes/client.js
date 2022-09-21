@@ -72,5 +72,14 @@ module.exports = function(router, database) {
       .catch(e => res.send(e));
   });
 
+  router.get('/find/sessionswarning', (req, res) => {
+    database.findSessionsWarning()
+      .then((results) => {
+        res.send(results);
+        console.log(results);
+      })
+      .catch(e => res.send(e));
+  });
+
   return router;
 };
