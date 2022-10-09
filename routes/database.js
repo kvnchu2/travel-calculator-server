@@ -205,8 +205,7 @@ const addBillingLink = function(company, link) {
   return pool.query(`
     UPDATE billing
     SET link = $2
-    WHERE company = $1
-    ;
+    WHERE company = $1;
     `, [company, link])
     .then(res => {
       return res;
