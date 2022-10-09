@@ -203,8 +203,10 @@ exports.findSessionsWarning = findSessionsWarning;
 
 const addBillingLink = function(company, link) {
   return pool.query(`
-    INSERT INTO billing (company, link)
-    VALUES ($1, $2) ON DUPLICATE KEY UPDATE company=($1);
+    UPDATE billing
+    SET link = $2
+    WHERE company = $1
+    ;
     `, [company, link])
     .then(res => {
       return res;
