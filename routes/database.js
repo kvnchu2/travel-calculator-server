@@ -2,6 +2,7 @@
 
 const { Pool } = require('pg');
 const dotenv = require('dotenv');
+const { Link } = require('@material-ui/core');
 dotenv.config();
 
 // const pool = new Pool({
@@ -198,6 +199,22 @@ const findSessionsWarning = function() {
 };
 
 exports.findSessionsWarning = findSessionsWarning;
+
+
+const addBillingLink = function(company, link) {
+  return pool.query(`
+    INSERT INTO billing (company, link)
+    VALUES ($1, $2) ON DUPLICATE KEY UPDATE company=($1);
+    `, [company, link])
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.addBillingLink = addBillingLink;
 
 
 
