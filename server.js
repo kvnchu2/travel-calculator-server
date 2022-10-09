@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require("cors");
-const cron = require("node-cron");
+
 
 const database = require('./routes/database');
 const indexRouter = require('./routes/index');
@@ -54,10 +54,6 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
-
-cron.schedule('* * * * *', function() {
-  console.log('Process running every minute');
 });
 
 app.listen(process.env.PORT || 3000, function() {

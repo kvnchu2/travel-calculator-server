@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS billing CASCADE;
+
+CREATE TABLE billing (
+  id SERIAL PRIMARY KEY NOT NULL,
+  company VARCHAR(255),
+  link VARCHAR(255)
+);
