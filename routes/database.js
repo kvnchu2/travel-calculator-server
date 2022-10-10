@@ -217,5 +217,20 @@ const addBillingLink = function(company, link) {
 
 exports.addBillingLink = addBillingLink;
 
+const getBillingLink = function() {
+  return pool.query(`
+    SELECT * from billing
+    ;
+    `)
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.getBillingLink = getBillingLink;
+
 
 
