@@ -1,9 +1,9 @@
 module.exports = function(router, database) {
 
-  router.post('/add/:company/:link', (req, res) => {
+  router.post('/add/:company', (req, res) => {
 
     const company = req.params["company"];
-    const link = req.params["link"];
+    const link = req.body["link"];
     database.addBillingLink(company, link)
       .then((results) => {
         res.send(results);
