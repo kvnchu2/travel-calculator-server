@@ -240,7 +240,7 @@ exports.getBillingLink = getBillingLink;
 
 const validateLogin = function(username, password) {
   return pool.query(`
-    SELECT * FROM user 
+    SELECT * FROM uses 
     WHERE username = $1 AND password = $2;
     `, [username, password])
     .then(res => {
@@ -251,5 +251,5 @@ const validateLogin = function(username, password) {
     });
 };
 
-exports.addBillingLink = addBillingLink;
+exports.validateLogin = validateLogin;
 
