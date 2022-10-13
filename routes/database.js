@@ -168,6 +168,8 @@ const getClientDates = function() {
 exports.getClientDates = getClientDates;
 
 
+//--------------------SESSIONS FUNCTIONS------------------------------
+
 const updateSessionsCompleted = function(name, sessionsCompleted) {
   return pool.query(`
     UPDATE Clients
@@ -201,6 +203,8 @@ const findSessionsWarning = function() {
 exports.findSessionsWarning = findSessionsWarning;
 
 
+//--------------------BILLING FUNCTIONS-------------------------------
+
 const addBillingLink = function(company, link) {
   return pool.query(`
     UPDATE billing
@@ -232,5 +236,20 @@ const getBillingLink = function() {
 
 exports.getBillingLink = getBillingLink;
 
+//---------------------LOGIN FUNCTIONS--------------------------------
 
+const validateLogin = function(username, password) {
+  return pool.query(`
+    SELECT * FROM user 
+    WHERE username = $1 AND password = $2;
+    `, [username, password])
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      console.log("error message", err);
+    });
+};
+
+exports.addBillingLink = addBillingLink;
 
