@@ -12,6 +12,7 @@ const travelRouter = require('./routes/travel');
 const clientRoutes = require('./routes/client');
 const sessionRoutes = require('./routes/session');
 const billingRoutes = require('./routes/billing');
+const loginRoutes = require('./routes/login');
 
 const app = express();
 
@@ -44,6 +45,10 @@ app.use('/session', sessionRouter);
 const billingRouter = express.Router();
 billingRoutes(billingRouter, database);
 app.use('/billing', billingRouter);
+
+const loginRouter = express.Router();
+loginRoutes(loginRouter, database);
+app.use('/login', loginRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
