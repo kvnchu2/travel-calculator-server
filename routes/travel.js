@@ -30,6 +30,4 @@ router.get('/calculateRoute/:fromLat/:fromLon/:toLat/:toLon/:departTime', functi
 
 module.exports = router;
 
-//http://localhost:8080/travel/calculateRoute/49.22469/-123.03518/49.23566/-123.12379/2021-11-05T15:30:00.000Z
 
-//https://travel-calculator-server.herokuapp.com/travel/calculateRoute/49.22469/-123.03518/49.23566/-123.12379/2021-11-05T15:30:00.000Z
