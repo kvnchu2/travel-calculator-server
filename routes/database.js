@@ -81,7 +81,7 @@ const findIcbcClient = function(name) {
   return pool.query(`
     SELECT * from CLIENTS
     WHERE name = $1 
-    AND (provider = 'ICBC' OR provider = '');
+    AND (provider = 'ICBC' OR provider = 'home');
     `, [name])
     .then(res => {
       return res;
@@ -97,7 +97,7 @@ const findWsbcClient = function(name) {
   return pool.query(`
     SELECT * from CLIENTS
     WHERE name = $1 
-    AND (provider = 'WSBC' OR provider = '');
+    AND (provider = 'WSBC' OR provider = 'home');
     `, [name])
     .then(res => {
       return res;
