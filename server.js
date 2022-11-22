@@ -8,7 +8,6 @@ const cors = require("cors");
 
 const database = require('./routes/database');
 const indexRouter = require('./routes/index');
-const travelRouter = require('./routes/travel');
 const clientRoutes = require('./routes/client');
 const sessionRoutes = require('./routes/session');
 const billingRoutes = require('./routes/billing');
@@ -31,7 +30,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/travel', travelRouter);
 
 
 const clientRouter = express.Router();
