@@ -1,7 +1,7 @@
 //calculates the "to" date 
 const calculateTimeMax = (eventDate) => {
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  let splitDate = eventDate.split(" ")
+  let splitDate = eventDate.split("%");
   let maxDay;
   let maxMonth;
   let maxYear = eventDate.split(" ")[2];
@@ -26,4 +26,6 @@ const calculateTimeMax = (eventDate) => {
   console.log("splitDate", splitDate);
   return splitDate.join(" ");
 }
+
+export {calculateTimeMax}
 
