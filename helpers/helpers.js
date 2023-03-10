@@ -27,5 +27,4 @@ const calculateTimeMax = (eventDate) => {
   return splitDate.join(" ");
 }
 
-export {calculateTimeMax}
 

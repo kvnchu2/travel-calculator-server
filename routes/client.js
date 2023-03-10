@@ -122,10 +122,8 @@ async function listEvents(auth, inputDate) {
   }
   console.log("input Date", inputDate)
   console.log('Upcoming 10 events:');
-  events.map((event, i) => {
-    const start = event.start.dateTime || event.start.date;
-    console.log(`${start} - ${event.summary}`);
-  });
+  console.log('events', events);
+  return events;
 }
 
 
