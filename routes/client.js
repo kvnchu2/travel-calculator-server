@@ -194,7 +194,7 @@ module.exports = function(router) {
 
   router.get('/sessionscompleted/:name/:startdate/:enddate', (req, res) => {
     authorize()
-      .then(results => listEvents(results, req.params['name'], req.params['startdate'], req.params['enddate']))
+      .then(results => sessionsCompleted(results, req.params['name'], req.params['startdate'], req.params['enddate']))
       .then((results) => {
         res.send(results);
       })
