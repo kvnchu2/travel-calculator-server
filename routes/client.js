@@ -193,8 +193,8 @@ const getClientsNotScheduled = async (auth, startDate, endDate) => {
     orderBy: 'startTime',
   });
 
-  const events = res.data.items;
-  return events;
+  
+  return res;
 };
 
 module.exports = function(router) {
