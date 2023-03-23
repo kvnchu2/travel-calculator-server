@@ -181,7 +181,7 @@ const sessionsCompleted = async (auth, name, startDate, endDate) => {
   return events;
 };
 
-const getClientsNotScheduled= async (startDate, endDate) => {
+const getClientsNotScheduled = async (auth, startDate, endDate) => {
   const calendar = google.calendar({version: 'v3', auth});
 
   const res = await calendar.events.list({
