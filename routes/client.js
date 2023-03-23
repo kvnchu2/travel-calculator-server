@@ -181,6 +181,22 @@ const sessionsCompleted = async (auth, name, startDate, endDate) => {
   return events;
 };
 
+const getClientsNotScheduled= async (startDate, endDate) => {
+  const calendar = google.calendar({version: 'v3', auth});
+
+  const res = await calendar.events.list({
+    calendarId: 'primary',
+    timeMin: startDate.toISOString(),
+    timeMax: endDate.toISOString(),
+    showDeleted: false,
+    singleEvents: true, //shows recurring events
+    orderBy: 'startTime',
+  });
+
+  const events = res.data.items;
+  return events;
+};
+
 module.exports = function(router) {
 
   router.get('/listevents/:inputdate', (req, res) => {
@@ -195,6 +211,15 @@ module.exports = function(router) {
   router.get('/sessionscompleted/:name/:startdate/:enddate', (req, res) => {
     authorize()
       .then(results => sessionsCompleted(results, req.params['name'], req.params['startdate'], req.params['enddate']))
+      .then((results) => {
+        res.send(results);
+      })
+      .catch(e => res.send(e));
+  });
+
+  router.get('/clientsnotscheduled/:startdate/:enddate', (req, res) => {
+    authorize()
+      .then(results => getClientsNotScheduled(results, req.params['startdate'], req.params['enddate']))
       .then((results) => {
         res.send(results);
       })
