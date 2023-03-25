@@ -186,14 +186,13 @@ const getClientsNotScheduled = async (auth, startDate, endDate) => {
 
   const res = await calendar.events.list({
     calendarId: 'primary',
-    timeMin: startDate.toISOString(),
-    timeMax: endDate.toISOString(),
+    timeMin: (new Date(`${startDate} 07:00 UTC`)).toISOString(),
+    timeMax: (new Date(`${endDate} 6:59 UTC`)).toISOString(),
     showDeleted: false,
     singleEvents: true, //shows recurring events
     orderBy: 'startTime',
   });
 
-  
   return res;
 };
 
